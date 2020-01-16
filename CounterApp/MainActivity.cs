@@ -7,6 +7,7 @@ using Xamarin.Android;
 using System;
 using Android.Content;
 using Android.Preferences;
+using Android.Util;
 
 namespace CounterApp
 {
@@ -29,12 +30,8 @@ namespace CounterApp
                     count = 0;
                 }
                 countView.Text = count.ToString();
-               // prefs.Edit().PutInt("storedCount", count).Commit();
             }
         }
-
-        ISharedPreferences prefs;
-        //Context mContext = new Context();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -52,16 +49,36 @@ namespace CounterApp
             minusBtn.Click += MinusOnClick;
             resetBtn.Click += ResetOnClick;
 
-            //prefs = PreferenceManager.GetDefaultSharedPreferences(mContext);
-            //var loadedCount = prefs.GetInt("storedCount", 0);
+            
 
-            countView.Text = "0";
+            if (savedInstanceState != null)
+            {
+                int restoredCount = savedInstanceState.GetInt("count");
+                count = restoredCount;
+                countView.Text = restoredCount.ToString();
+            }
+            else
+            {
+                countView.Text = "0";
+            }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        /// <summary>
+        /// Saves information using bundles 
+        /// </summary>
+        /// <param name="outState"></param>
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutInt("count", count);
+            Log.Debug(GetType().FullName, "Saved instance state to bundle. Count: " + count + " was saved.");
+
+            base.OnSaveInstanceState(outState);
         }
 
 
