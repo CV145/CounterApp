@@ -3199,10 +3199,13 @@ namespace CounterApp
 			public const int notify_panel_notification_icon_bg = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int tooltip_frame_dark = 2131165294;
+			public const int small_clock_logo = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int tooltip_frame_light = 2131165295;
+			public const int tooltip_frame_dark = 2131165295;
+			
+			// aapt resource value: 0x7F070070
+			public const int tooltip_frame_light = 2131165296;
 			
 			static Drawable()
 			{
@@ -4121,6 +4124,9 @@ namespace CounterApp
 			// aapt resource value: 0x7F0C0002
 			public const int ic_launcher_round = 2131492866;
 			
+			// aapt resource value: 0x7F0C0003
+			public const int small_clock_logo = 2131492867;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -4297,10 +4303,13 @@ namespace CounterApp
 			public const int path_password_strike_through = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public const int search_menu_title = 2131558454;
+			public const int savedCount = 2131558454;
 			
 			// aapt resource value: 0x7F0D0037
-			public const int status_bar_notification_info_overflow = 2131558455;
+			public const int search_menu_title = 2131558455;
+			
+			// aapt resource value: 0x7F0D0038
+			public const int status_bar_notification_info_overflow = 2131558456;
 			
 			static String()
 			{

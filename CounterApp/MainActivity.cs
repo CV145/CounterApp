@@ -11,9 +11,11 @@ using Android.Util;
 
 namespace CounterApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true, Icon ="@drawable/clock")]
     public class MainActivity : AppCompatActivity
     {
+        ISharedPreferences sharedPreferences;
+        ISharedPreferencesEditor saveEditor;
         Button plusBtn;
         Button minusBtn;
         Button resetBtn;
@@ -29,6 +31,9 @@ namespace CounterApp
                 {
                     count = 0;
                 }
+                saveEditor.PutInt(Resource.String.savedCount.ToString(), count);
+                saveEditor.Apply();
+                Log.Debug(GetType().FullName, "Saved int using preferences. Count: " + count + " was saved.");
                 countView.Text = count.ToString();
             }
         }
@@ -49,36 +54,19 @@ namespace CounterApp
             minusBtn.Click += MinusOnClick;
             resetBtn.Click += ResetOnClick;
 
-            
+            //creates a new save file or accesses an existing one
+            sharedPreferences = GetPreferences(FileCreationMode.Private);
+            saveEditor = sharedPreferences.Edit();
 
-            if (savedInstanceState != null)
-            {
-                int restoredCount = savedInstanceState.GetInt("count");
-                count = restoredCount;
-                countView.Text = restoredCount.ToString();
-            }
-            else
-            {
-                countView.Text = "0";
-            }
+            //restore stored count
+            Count = sharedPreferences.GetInt(Resource.String.savedCount.ToString(), 0);
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        /// <summary>
-        /// Saves information using bundles 
-        /// </summary>
-        /// <param name="outState"></param>
-        protected override void OnSaveInstanceState(Bundle outState)
-        {
-            outState.PutInt("count", count);
-            Log.Debug(GetType().FullName, "Saved instance state to bundle. Count: " + count + " was saved.");
-
-            base.OnSaveInstanceState(outState);
         }
 
 

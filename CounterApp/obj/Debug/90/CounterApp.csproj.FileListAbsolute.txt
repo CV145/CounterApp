@@ -259,3 +259,4 @@ C:\Users\carlo\Desktop\CounterApp\CounterApp\obj\Debug\90\stamp\_ConvertResource
 C:\Users\carlo\Desktop\CounterApp\CounterApp\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\carlo\Desktop\CounterApp\CounterApp\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\carlo\Desktop\CounterApp\CounterApp\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\carlo\Desktop\CounterApp\CounterApp\obj\Debug\90\res\drawable\clock.png

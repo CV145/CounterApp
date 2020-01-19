@@ -12,7 +12,6 @@ public class MainActivity
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"n_onRequestPermissionsResult:(I[Ljava/lang/String;[I)V:GetOnRequestPermissionsResult_IarrayLjava_lang_String_arrayIHandler\n" +
-			"n_onSaveInstanceState:(Landroid/os/Bundle;)V:GetOnSaveInstanceState_Landroid_os_Bundle_Handler\n" +
 			"";
 		mono.android.Runtime.register ("CounterApp.MainActivity, CounterApp", MainActivity.class, __md_methods);
 	}
@@ -40,14 +39,6 @@ public class MainActivity
 	}
 
 	private native void n_onRequestPermissionsResult (int p0, java.lang.String[] p1, int[] p2);
-
-
-	public void onSaveInstanceState (android.os.Bundle p0)
-	{
-		n_onSaveInstanceState (p0);
-	}
-
-	private native void n_onSaveInstanceState (android.os.Bundle p0);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)
